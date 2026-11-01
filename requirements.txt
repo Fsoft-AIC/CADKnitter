@@ -1,0 +1,14 @@
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.4.0
+torchvision==0.19.0
+torchaudio=2.4.0
+diffusers[torch]==0.27
+transformers==4.46.1
+wandb
+matplotlib
+scipy
+trimesh
+manifold3d
+plyfile
+scikit-learn
+huggingface-hub==0.25.2

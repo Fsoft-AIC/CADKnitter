@@ -1,0 +1,22 @@
+__pycache__/
+cache/
+wandb_cache/
+samples/
+vis_guidance/
+weights/
+outputs/
+.DS_Store
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.jsonl
+*.pth
+.vscode
+blender
+blender-3.4.0-linux-x64/
+third_party/pytorch3d-main/pytorch3d/_C.cpython-310-x86_64-linux-gnu.so
+# Data splits are downloaded from https://huggingface.co/datasets/Fsoft-AIC/knitcad
+data/knitcad_data_split*.json

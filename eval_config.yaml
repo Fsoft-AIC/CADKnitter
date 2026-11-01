@@ -1,0 +1,20 @@
+knitcad:
+  surfpos_weight: weights/knitcad_ldm_surfpos.pt
+  surfz_weight:   weights/abc_ldm_surfz.pt
+  edgepos_weight: weights/abc_ldm_edgepos.pt
+  edgez_weight:   weights/abc_ldm_edgez.pt
+  surfvae_weight: weights/abc_vae_surf.pt
+  edgevae_weight: weights/abc_vae_edge.pt
+  save_folder:    samples
+  batch_size:     16
+  z_threshold:    0.2
+  bbox_threshold: 0.08
+  num_surfaces:   70
+  num_edges:      40
+  num_contact_faces: 10
+  use_cf:         False
+  class_label:    []
+  num_optim_steps: 1000
+  guidance_timesteps: [105, 85, 65, 45]
+  weight_semantic:  10000.0
+  num_candidates: 8

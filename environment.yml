@@ -1,0 +1,88 @@
+name: cadknitter_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Python (README suggests 3.9; the reference build used 3.10)
+  - python=3.10
+  - pip
+
+  # Geometry kernel (pythonOCC + OpenCASCADE) — pulled from conda-forge.
+  # occwl (installed editably below via pip) depends on this.
+  - pythonocc-core=7.5.1
+
+  # Optional: needed only for the visualization/video pipeline.
+  - ffmpeg
+
+  - pip:
+      # --- PyTorch (CUDA 12.1) ---
+      # The cu121 wheels bundle their own CUDA runtime, so the nvidia-*-cu12
+      # and triton packages do NOT need to be listed explicitly.
+      - --extra-index-url https://download.pytorch.org/whl/cu121
+      - torch==2.4.0
+      - torchvision==0.19.0
+      - torchaudio==2.4.0
+
+      # --- Diffusion / models (version-sensitive, kept pinned) ---
+      - diffusers[torch]==0.27.0
+      - transformers==4.46.1
+      - huggingface-hub==0.25.2
+      - accelerate
+      - tokenizers
+      - safetensors
+      - timm
+      - open-clip-torch
+      - ftfy
+      - regex
+      - kornia
+      - lpips
+
+      # --- Scientific stack ---
+      - numpy<2
+      - scipy
+      - scikit-learn
+      - scikit-image
+      - pandas
+      - matplotlib
+      - networkx
+      - sympy
+
+      # --- Geometry / mesh / CAD I/O ---
+      - trimesh
+      - manifold3d          
+      - open3d
+      - plyfile
+      - pymcubes
+      - libigl
+      - pyntcloud
+      - pyquaternion
+      - gmsh
+      - opencv-python
+      - POT
+
+      # --- Config / experiment tooling ---
+      - hydra-core
+      - omegaconf
+      - wandb
+      - tqdm
+      - pyyaml
+      - loguru
+      - tabulate
+      - submitit
+      - einops
+
+      # --- pytorch3d build dependencies ---
+      - ninja
+      - fvcore
+      - iopath
+
+      # --- Visualization (dashboards) ---
+      - plotly
+      - dash
+      - flask
+
+      # NOTE: pytorch3d, chamferdist, and occwl are NOT installed here.
+      # They import/link against torch at BUILD time, which fails under pip's
+      # build isolation while torch is still being installed in this same pass.
+      # Install them AFTER the env is created, from third_party/, with
+      # --no-build-isolation. See README / CLAUDE.md for the exact commands.
